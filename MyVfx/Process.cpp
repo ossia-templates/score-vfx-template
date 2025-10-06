@@ -17,7 +17,7 @@ Model::Model(
     : Process::ProcessModel{duration, id, "gfxProcess", parent}
 {
   metadata().setInstanceName(*this);
-  m_outlets.push_back(new Gfx::TextureOutlet{Id<Process::Port>(0), this});
+  m_outlets.push_back(new Gfx::TextureOutlet{"Texture Out", Id<Process::Port>(0), this});
 }
 
 Model::~Model() { }
