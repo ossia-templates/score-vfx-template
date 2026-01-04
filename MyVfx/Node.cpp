@@ -159,17 +159,19 @@ struct TexturedCube final : score::gfx::BasicMesh
   // This function is called when running the draw calls,
   // it tells the pipeline which buffers are going to be bound
   // to each attribute defined above
-  void setupBindings(
-      const score::gfx::MeshBuffers& bufs,
-      QRhiCommandBuffer& cb) const noexcept override
+  void setupBindings(const score::gfx::MeshBuffers &bufs,
+                     QRhiCommandBuffer &cb) const noexcept override
   {
-    const QRhiCommandBuffer::VertexInput bindings[] = {
-        {bufs.mesh, 0}, // vertex starts at offset zero
-        {bufs.mesh,
-         36 * 3 * sizeof(float)}, // texcoord starts after all the vertices
-    };
+      SCORE_ASSERT(bufs.buffers.size() == 1);
+      auto buf = bufs.buffers[0].handle;
+      SCORE_ASSERT(buf);
 
-    cb.setVertexInput(0, 2, bindings);
+      const QRhiCommandBuffer::VertexInput bindings[] = {
+          {buf, 0},                     // vertex starts at offset zero
+          {buf, 36 * 3 * sizeof(float)} // texcoord starts after all the vertices
+      };
+
+      cb.setVertexInput(0, 2, bindings);
   }
 };
 
