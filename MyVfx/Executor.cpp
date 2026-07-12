@@ -2,7 +2,6 @@
 
 #include <Gfx/GfxApplicationPlugin.hpp>
 #include <Gfx/GfxContext.hpp>
-#include <Gfx/Graph/PhongNode.hpp>
 #include <Gfx/TexturePort.hpp>
 #include <Process/Dataflow/Port.hpp>
 #include <Process/ExecutionContext.hpp>
