@@ -36,5 +36,8 @@ target_link_libraries(score_addon_my_vfx PUBLIC
 )
 
 # Target-specific options
-setup_score_plugin(score_addon_my_vfx)
+setup_score_addon(
+  TARGET score_addon_my_vfx
+  NAME "My VFX"
+)
 
